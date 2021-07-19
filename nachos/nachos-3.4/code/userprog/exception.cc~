@@ -97,48 +97,55 @@ void ExceptionHandler(ExceptionType which)
 	return;
 
         case PageFaultException:
-		DEBUG('a', "\n No valid translation found");
+		{
 		printf("\n\n No valid translation found");
 		interrupt->Halt();
 		break;
+		}
 
         case ReadOnlyException:
-		DEBUG('a', "\n Write attempted to page marked read-only");
+		{
 		printf("\n\n Write attempted to page marked read-only");
 		interrupt->Halt();
 		break;
+		}
 
         case BusErrorException:
-		DEBUG('a', "\n Translation resulted in an invalid physical address");
+		{
 		printf("\n\n Translation resulted in an invalid physical address");
 		interrupt->Halt();
 		break;
+		}
 
         case AddressErrorException:
-		DEBUG('a', "\n Unaligned reference or one that was beyond the end of the address space");
+		{
 		printf("\n\n Unaligned reference or one that was beyond the end of the address space");
 		interrupt->Halt();
 		break;
+		}
 
         case OverflowException:
-		DEBUG('a', "\n Integer overflow in add or sub");
+		{
 		printf("\n\n Integer overflow in add or sub");
 		interrupt->Halt();
 		break;
+		}
 
 	case IllegalInstrException:
-		DEBUG('a', "\n Unimplemented or reserved instr");
+		{
 		printf("\n\n Unimplemented or reserved instr");
 		interrupt->Halt();
 		break;	
+		}
 
 	case SyscallException:
 	switch (type) {
-		case SC_Halt:	
-		DEBUG('a', "\nShutdown, initiated by user program. \n");
-		printf("\nShutdown, initiated by user program. \n");
-		interrupt->Halt();
-		return;
+		case SC_Halt:
+		{	
+			printf("\nShutdown, initiated by user program. \n");
+			interrupt->Halt();
+			return;
+		}
 
 		case SC_ReadString:
 		{	
@@ -168,10 +175,9 @@ void ExceptionHandler(ExceptionType which)
 			return;
 			}
 		}
-		break;
+		default: 
+			break;
 	}
-	default: 
-		printf("Unexpected user mode exception %d %d \n, which, type");
-		ASSERT(FALSE);
+	IncreasePC();	
 }
 		
