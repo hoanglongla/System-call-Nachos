@@ -30,10 +30,10 @@
 #define SC_Fork		9
 #define SC_Yield	10
 #define SC_Sub		11
-#define SC_ReadString	12
-#define SC_PrintString	13
-#define SC_ReadInt		13
-#define SC_PrintInt		14
+#define SC_ReadInt	13
+#define SC_PrintInt	14
+#define SC_ReadString	16
+#define SC_PrintString	17
 
 #ifndef IN_ASM
 

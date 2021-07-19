@@ -154,6 +154,8 @@ PrintString:
 	j	$31
 	.end PrintString
 
+	.globl ReadInt
+	.ent ReadInt
 ReadInt:
 	addiu $2, $0, SC_ReadInt
 	syscall
@@ -167,9 +169,6 @@ PrintInt:
 	syscall
 	j	$31
 	.end PrintInt
-
-	.globl ReadChar
-	.ent ReadChar
 
 /* dummy function to keep gcc happy */
         .globl  __main
