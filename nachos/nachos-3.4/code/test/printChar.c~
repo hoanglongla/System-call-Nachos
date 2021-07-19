@@ -1,0 +1,14 @@
+#include "syscall.h"
+#include "copyright.h"
+#define MAX_LENGTH 255
+int main()
+{
+	char str[25];
+	int length = 25;
+	PrintString("\t\tHello\t\t\n");
+	PrintString("Input string: ");
+	ReadString(str, length);
+	PrintString("The string you just input: ");
+	PrintString(str);
+	return 0;
+}
