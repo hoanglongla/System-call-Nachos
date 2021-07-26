@@ -30,7 +30,8 @@
 //	endian machine, and we're now running on a big endian machine.
 //----------------------------------------------------------------------
 
-static void SwapHeader (NoffHeader *noffH)
+static void 
+SwapHeader (NoffHeader *noffH)
 {
 	noffH->noffMagic = WordToHost(noffH->noffMagic);
 	noffH->code.size = WordToHost(noffH->code.size);
@@ -137,7 +138,8 @@ AddrSpace::~AddrSpace()
 //	when this thread is context switched out.
 //----------------------------------------------------------------------
 
-void AddrSpace::InitRegisters()
+void
+AddrSpace::InitRegisters()
 {
     int i;
 
