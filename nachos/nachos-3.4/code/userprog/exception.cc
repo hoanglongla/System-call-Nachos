@@ -307,11 +307,11 @@ void ExceptionHandler(ExceptionType which)
 			delete buffer;
 			IncreasePC();
 			return;
-			}
 		}
+	}
 		default: 
 			break;
-	}
+}
 	IncreasePC();	
 }
 		

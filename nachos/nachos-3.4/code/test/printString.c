@@ -1,12 +1,9 @@
 #include "syscall.h"
+#include "copyright.h"
 
-int main()
+void main()
 {
-	char str[200];
-	PrintString("\nInput string: ");
-	ReadString(str, 200);
-	PrintString("\nThe string you just input: ");
-	PrintString(str);
+	char str[255];
+	ReadString(str, 255);
 	Halt();
-	return 0;
 }
