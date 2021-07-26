@@ -9,13 +9,13 @@
 
 #include "syscall.h"
 
-
+    int A[512];
 
 int
 main()
 {
     int i, j, tmp;
-    int A[100];	/* size of physical memory; with code, we'll run out of space!*/
+	/* size of physical memory; with code, we'll run out of space!*/
     int n;
     /* first initialize the array, in reverse sorted order */
     for (i = 0; i < 512; i++)		
