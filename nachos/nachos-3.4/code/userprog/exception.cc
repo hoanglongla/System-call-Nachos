@@ -185,7 +185,6 @@ void ExceptionHandler(ExceptionType which)
                                     printf("\n\n The integer number is not valid");
                                     DEBUG('a', "\n The integer number is not valid");
                                     machine->WriteRegister(2, 0);
-                                    IncreasePC();
                                     delete buffer;
                                     return;
                                 }
@@ -199,7 +198,6 @@ void ExceptionHandler(ExceptionType which)
                             printf("\n\n The integer number is not valid");
                             DEBUG('a', "\n The integer number is not valid");
                             machine->WriteRegister(2, 0);
-                            IncreasePC();
                             delete buffer;
                             return;
                         }
@@ -218,7 +216,6 @@ void ExceptionHandler(ExceptionType which)
                         number = number * -1;
                     }
                     machine->WriteRegister(2, number);
-                    IncreasePC();
                     delete buffer;
                     return;		
 		}
