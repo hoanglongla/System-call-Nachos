@@ -185,6 +185,7 @@ void ExceptionHandler(ExceptionType which)
                                     printf("\n\n The integer number is not valid");
                                     DEBUG('a', "\n The integer number is not valid");
                                     machine->WriteRegister(2, 0);
+                                    IncreasePC();
                                     delete buffer;
                                     return;
                                 }
@@ -198,6 +199,7 @@ void ExceptionHandler(ExceptionType which)
                             printf("\n\n The integer number is not valid");
                             DEBUG('a', "\n The integer number is not valid");
                             machine->WriteRegister(2, 0);
+                            IncreasePC();
                             delete buffer;
                             return;
                         }
@@ -216,6 +218,7 @@ void ExceptionHandler(ExceptionType which)
                         number = number * -1;
                     }
                     machine->WriteRegister(2, number);
+                    IncreasePC();
                     delete buffer;
                     return;		
 		}
@@ -305,9 +308,50 @@ void ExceptionHandler(ExceptionType which)
 			IncreasePC();
 			return;
 		}
+
+		case SC_ReadChar:
+		{	
+			//Input: 1 ky tu 
+			//Output: Khong co
+			//Doc vao 1 ky tu kieu char
+			int maxBytes = 255;
+			char* buffer = new char[255];
+			int numBytes = gSynchConsole->Read(buffer, maxBytes);
+
+			if(numBytes >1) //Nhap nhieu hon 1 ky tu thi bao loi
+			{
+				printf("Input a char: ");
+				machine->WriteRegister(2, 0);
+			}
+			else if(numBytes ==0) //NULL
+			{
+				printf("NULL!");
+				machine->WriteRegister(2, 0);
+			}
+			else
+			{
+				//Dung 1 ky tu, lay ky tu o i = 0 roi dua vao r2
+				char c = buffer[0];
+				machine->WriteRegister(2, c);
+			}
+			delete buffer;
+			IncreasePC();
+			return;
+		}
+			
+		case SC_PrintChar:
+		{
+			//Input: Ki tu loai char
+			//Output: Ki tu loai char
+			//Xuat ki tu ra man hinh
+			char c = (char)machine->ReadRegister(4);
+			gSynchConsole->Write(&c, 1);
+			IncreasePC();
+			return;
+		}
 	}
-		default: 
-			break;
+	default: 
+		break;
 }
 	IncreasePC();	
 }
