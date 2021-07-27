@@ -317,7 +317,7 @@ void ExceptionHandler(ExceptionType which)
 
 			if(numBytes >1) //Nhap nhieu hon 1 ky tu thi bao loi
 			{
-				printf("Input a char: ");
+				printf("Input only a character ");
 				machine->WriteRegister(2, 0);
 			}
 			else if(numBytes ==0) //NULL
