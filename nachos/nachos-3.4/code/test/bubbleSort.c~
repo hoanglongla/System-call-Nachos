@@ -10,7 +10,7 @@ void main()
 	n=ReadInt();
 	while(n>100){
 	PrintString("Yeu cau 1<=n<=100\n");
-	printString("Nhap lai n:  ");
+	PrintString("Nhap lai n:  ");
 	n=ReadInt();
 	}
 	for (i=0;i<n;i++) {
