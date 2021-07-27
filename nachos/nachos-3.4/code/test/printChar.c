@@ -2,8 +2,8 @@
 
 void main()
 {
-	int c;
-	c = ReadChar();
+	char c;
+	c=ReadChar();
 	PrintChar(c);
 	Halt();
 }

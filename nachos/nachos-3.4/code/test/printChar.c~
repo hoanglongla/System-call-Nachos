@@ -1,10 +1,9 @@
 #include "syscall.h"
 
-int main()
+void main()
 {
-	int c;
-	c = ReadChar();
+	char c;
+	ReadChar(c);
 	PrintChar(c);
 	Halt();
-	return 0;
 }
