@@ -5,7 +5,7 @@ int main()
 {
 	char str[200];
 	PrintString("input number");
-	ReadString(str, 199);
+	ReadString(str, 200);
 	PrintString(str);
 	PrintString("\n");
 	Halt();
