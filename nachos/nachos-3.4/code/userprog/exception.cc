@@ -149,19 +149,17 @@ void ExceptionHandler(ExceptionType which)
 		
 		case SC_ReadInt:
 		{
-		// Input: K co
-                    // Output: Tra ve so nguyen doc duoc tu man hinh console.
-                    // Chuc nang: Doc so nguyen tu man hinh console.
+		    // Doc so nguyen tu man hinh console.
                     char* buffer;
                     int MAX_BUFFER = 255;
                     buffer = new char[MAX_BUFFER + 1];
-                    int numbytes = gSynchConsole->Read(buffer, MAX_BUFFER);// doc buffer toi da MAX_BUFFER ki tu, tra ve so ki tu doc dc
-                    int number = 0; // so luu ket qua tra ve cuoi cung
+                    int numbytes = gSynchConsole->Read(buffer, MAX_BUFFER);// doc buffer toi da MAX_BUFFER ki tu, sau do tra ve so ki tu doc dc
+                    int number = 0; // ket qua cuoi cung doc duoc
 						
                     /* Qua trinh chuyen doi tu buffer sang so nguyen int */
 			
                     // Xac dinh so am hay so duong                       
-                    bool isNegative = false; // Gia thiet la so duong.
+                    bool isNegative = false; // Gia thiet so nhap vao la so duong.
                     int firstNumIndex = 0;
                     int lastNumIndex = 0;
                     if(buffer[0] == '-')
@@ -171,18 +169,18 @@ void ExceptionHandler(ExceptionType which)
                         lastNumIndex = 1;                        			   		
                     }
                     
-                    // Kiem tra tinh hop le cua so nguyen buffer
+                    // Kiem tra tinh hop le cua so nguyen 
                     for(int i = firstNumIndex; i < numbytes; i++)					
                     {
-                        if(buffer[i] == '.') /// 125.0000000 van la so
+                        if(buffer[i] == '.') // 15.0 van la so nguyen
                         {
                             int j = i + 1;
                             for(; j < numbytes; j++)
                             {
-				// So khong hop le
+				// Truong hop so khong hop le
                                 if(buffer[j] != '0')
                                 {
-                                    printf("\n\n The integer number is not valid");
+                                    printf(" The integer number is not valid");
                                     DEBUG('a', "\n The integer number is not valid");
                                     machine->WriteRegister(2, 0);
                                     IncreasePC();
@@ -190,7 +188,7 @@ void ExceptionHandler(ExceptionType which)
                                     return;
                                 }
                             }
-                            // la so thoa cap nhat lastNumIndex
+                            
                             lastNumIndex = i - 1;				
                             break;                           
                         }
@@ -225,9 +223,7 @@ void ExceptionHandler(ExceptionType which)
 
 		case SC_PrintInt:
 		{	
-		    // Input: mot so integer
-                    // Output: khong co 
-                    // Chuc nang: In so nguyen len man hinh console
+		    // In so nguyen len man hinh console
                     int number = machine->ReadRegister(4);
 		    if(number == 0)
                     {
@@ -255,16 +251,17 @@ void ExceptionHandler(ExceptionType which)
                         t_number /= 10;
                     }
     
-		    // Tao buffer chuoi de in ra man hinh
+		    // Tao mang dem chuoi de in ra man hinh
                     char* buffer;
                     int MAX_BUFFER = 255;
                     buffer = new char[MAX_BUFFER + 1];
+		    // chuyen so thanh ky tu
                     for(int i = firstNumIndex + numberOfNum - 1; i >= firstNumIndex; i--)
                     {
                         buffer[i] = (char)((number % 10) + 48);
                         number /= 10;
                     }
-                    if(isNegative)
+                    if(isNegative) // neu la so am, them dau '-' o dang truoc
                     {
                         buffer[0] = '-';
 			buffer[numberOfNum + 1] = 0;
