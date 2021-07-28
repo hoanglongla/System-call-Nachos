@@ -156,7 +156,7 @@ void ExceptionHandler(ExceptionType which)
                     int numbytes = gSynchConsole->Read(buffer, MAX_BUFFER);// doc buffer toi da MAX_BUFFER ki tu, sau do tra ve so ki tu doc dc
                     int number = 0; // ket qua cuoi cung doc duoc
 						
-                    /* Qua trinh chuyen doi tu buffer sang so nguyen int */
+                    // Qua trinh chuyen doi tu buffer sang so nguyen int
 			
                     // Xac dinh so am hay so duong                       
                     bool isNegative = false; // Gia thiet so nhap vao la so duong.
@@ -191,7 +191,7 @@ void ExceptionHandler(ExceptionType which)
                             
                             lastNumIndex = i - 1;				
                             break;                           
-                        }
+                        } // neu khong co dau cham
                         else if(buffer[i] < '0' && buffer[i] > '9')
                         {
                             printf("\n\n The integer number is not valid");
@@ -240,7 +240,7 @@ void ExceptionHandler(ExceptionType which)
                     if(number < 0)
                     {
                         isNegative = true;
-                        number = number * -1; // Nham chuyen so am thanh so duong de tinh so chu so
+                        number = number * -1; // Chuyen so am thanh so duong de tinh so chu so
                         firstNumIndex = 1; 
                     } 	
                     
