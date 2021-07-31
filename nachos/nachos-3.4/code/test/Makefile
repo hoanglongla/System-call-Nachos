@@ -40,8 +40,7 @@ else
 # change this if you create a new test program!
 PROGRAMS = halt shell matmult sort printString
 endif
-all:  $(PROGRAMS)
-
+all: $(PROGRAMS)
 
 start.o: start.s ../userprog/syscall.h
 	$(CPP) $(CPPFLAGS) start.c > strt.s

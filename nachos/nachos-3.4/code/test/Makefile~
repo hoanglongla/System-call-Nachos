@@ -34,13 +34,8 @@ LD = $(GCCDIR)ld
 CPP = gcc -E
 INCDIR =-I../userprog -I../threads
 CFLAGS = -G 0 -c $(INCDIR)
-ifeq ($(hosttype),unknown)
-PROGRAMS = unknownhost
-else
-# change this if you create a new test program!
-PROGRAMS = halt shell matmult sort printString
-endif
-all:  halt shell matmult sort printString
+
+all: halt shell matmult sort printString
 
 
 start.o: start.s ../userprog/syscall.h
